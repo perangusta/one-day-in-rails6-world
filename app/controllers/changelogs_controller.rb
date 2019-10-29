@@ -4,7 +4,7 @@ class ChangelogsController < ApplicationController
   # GET /changelogs
   # GET /changelogs.json
   def index
-    @changelogs = Changelog.all
+    @changelogs = Changelog.with_rich_text_rich_description
   end
 
   # GET /changelogs/1
