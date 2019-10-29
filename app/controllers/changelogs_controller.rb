@@ -11,6 +11,13 @@ class ChangelogsController < ApplicationController
     end
   end
 
+  def published
+    @changelogs = Changelog.with_rich_text_rich_description.
+                            last_10_published
+
+    render :index
+  end
+
   # GET /changelogs/1
   # GET /changelogs/1.json
   def show
