@@ -10,7 +10,7 @@ class ChangelogsController < ApplicationController
     last_connection_at = 7.days.ago
     @changelogs_since_last_connection = Changelog.since(last_connection_at)
 
-    @changelogs = Changelog.with_rich_text_rich_description
+    @changelogs = Changelog.with_rich_text_rich_description.includes(:contributor)
 
     if @changelogs.empty? && Rails.env.development?
       raise ::ChangelogMissingError
@@ -86,6 +86,8 @@ class ChangelogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def changelog_params
-      params.require(:changelog).permit(:title, :description, :rich_description, :status)
+      params.require(:changelog).permit(
+        :title, :description, :rich_description, :status, :contributor_id
+      )
     end
 end

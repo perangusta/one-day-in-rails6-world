@@ -31,6 +31,12 @@
     <%= form.rich_text_area :rich_description %>
   </div>
 
+  <div class="field">
+    <%= form.label :contributor_id %>
+
+    <%= form.collection_select :contributor_id, Contributor.all, :id, :login %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
