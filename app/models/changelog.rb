@@ -1,4 +1,6 @@
 class Changelog < ApplicationRecord
+  self.implicit_order_column = :updated_at
+
   has_rich_text :rich_description
 
   validates :title, presence: true, length: { minimum: 3 }

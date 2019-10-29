@@ -3,6 +3,19 @@
 <%= link_to "Changelogs", changelogs_path %>
 <%= link_to "Published changelogs", published_changelogs_path %>
 
+
+<% if @latest_changelog.present? %>
+  <hr>
+
+  <div>
+    <h2>Latest changelog</h2>
+
+    <div><%= link_to @latest_changelog.title, @latest_changelog %></div>
+  </div>
+
+  <hr>
+<% end %>
+
 <h1>Changelogs</h1>
 
 <table>

@@ -4,6 +4,7 @@ class ChangelogsController < ApplicationController
   # GET /changelogs
   # GET /changelogs.json
   def index
+    @latest_changelog = Changelog.last
     @changelogs = Changelog.with_rich_text_rich_description
 
     if @changelogs.empty? && Rails.env.development?
