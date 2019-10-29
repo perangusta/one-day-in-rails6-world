@@ -5,6 +5,11 @@ class ChangelogsController < ApplicationController
   # GET /changelogs.json
   def index
     @latest_changelog = Changelog.last
+
+    # Fake last connection date
+    last_connection_at = 7.days.ago
+    @changelogs_since_last_connection = Changelog.since(last_connection_at)
+
     @changelogs = Changelog.with_rich_text_rich_description
 
     if @changelogs.empty? && Rails.env.development?

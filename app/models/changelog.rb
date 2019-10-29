@@ -8,4 +8,5 @@ class Changelog < ApplicationRecord
   enum status: { draft: 0, published: 1 }, _scopes: false
 
   scope :last_10_published, -> { order(created_at: :desc).where(status: :published).first(10) }
+  scope :since, ->(date) { where(updated_at: (date..)) }
 end

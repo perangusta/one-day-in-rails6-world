@@ -3,14 +3,24 @@
 <%= link_to "Changelogs", changelogs_path %>
 <%= link_to "Published changelogs", published_changelogs_path %>
 
-
+<hr>
 <% if @latest_changelog.present? %>
-  <hr>
-
   <div>
     <h2>Latest changelog</h2>
 
     <div><%= link_to @latest_changelog.title, @latest_changelog %></div>
+  </div>
+
+  <hr>
+<% end %>
+
+<% if @changelogs_since_last_connection.present? %>
+  <div>
+    <h2>Changelogs since your last connection</h2>
+
+    <% @changelogs_since_last_connection.each do |changelog| %>
+      <div><%= link_to changelog.title, changelog %></div>
+    <% end %>
   </div>
 
   <hr>
