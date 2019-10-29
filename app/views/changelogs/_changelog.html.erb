@@ -1,0 +1,9 @@
+<tr>
+  <td><%= changelog.status %></td>
+  <td><%= changelog.title %></td>
+  <td><%= changelog.description %></td>
+  <td><%= changelog.rich_description %></td>
+  <td><%= link_to 'Show', changelog %></td>
+  <td><%= link_to 'Edit', edit_changelog_path(changelog) %></td>
+  <td><%= link_to 'Destroy', changelog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
