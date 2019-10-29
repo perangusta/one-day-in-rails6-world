@@ -5,6 +5,10 @@ class ChangelogsController < ApplicationController
   # GET /changelogs.json
   def index
     @changelogs = Changelog.with_rich_text_rich_description
+
+    if @changelogs.empty? && Rails.env.development?
+      raise ::ChangelogMissingError
+    end
   end
 
   # GET /changelogs/1
@@ -69,6 +73,6 @@ class ChangelogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def changelog_params
-      params.require(:changelog).permit(:title, :description, :rich_description)
+      params.require(:changelog).permit(:title, :description, :rich_description, :status)
     end
 end

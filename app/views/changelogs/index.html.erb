@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Status</th>
       <th>Title</th>
       <th>Description</th>
       <th>Rich Description</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @changelogs.each do |changelog| %>
       <tr>
+        <td><%= changelog.status %></td>
         <td><%= changelog.title %></td>
         <td><%= changelog.description %></td>
         <td><%= changelog.rich_description %></td>

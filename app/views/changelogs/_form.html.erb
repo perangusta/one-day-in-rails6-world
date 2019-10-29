@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Changelog.statuses.keys.to_a %>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
