@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  shared:
+    custom_confirm_dialog:
+      title: Custom Confirm Dialog
+      buttons:
+        cancel: Cancel
+        confirm: OK
