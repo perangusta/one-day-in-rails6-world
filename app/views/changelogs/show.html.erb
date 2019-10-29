@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @changelog.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @changelog.description %>
+</p>
+
+<%= link_to 'Edit', edit_changelog_path(@changelog) %> |
+<%= link_to 'Back', changelogs_path %>

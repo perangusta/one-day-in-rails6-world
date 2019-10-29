@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Changelogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @changelogs.each do |changelog| %>
+      <tr>
+        <td><%= changelog.title %></td>
+        <td><%= changelog.description %></td>
+        <td><%= link_to 'Show', changelog %></td>
+        <td><%= link_to 'Edit', edit_changelog_path(changelog) %></td>
+        <td><%= link_to 'Destroy', changelog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Changelog', new_changelog_path %>
