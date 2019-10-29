@@ -69,6 +69,6 @@ class ChangelogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def changelog_params
-      params.require(:changelog).permit(:title, :description)
+      params.require(:changelog).permit(:title, :description, :rich_description)
     end
 end

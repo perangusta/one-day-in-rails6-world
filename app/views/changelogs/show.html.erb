@@ -10,5 +10,10 @@
   <%= @changelog.description %>
 </p>
 
+<p>
+  <strong>Rich Description:</strong>
+  <%= @changelog.rich_description %>
+</p>
+
 <%= link_to 'Edit', edit_changelog_path(@changelog) %> |
 <%= link_to 'Back', changelogs_path %>
