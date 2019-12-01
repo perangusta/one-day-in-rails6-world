@@ -33,3 +33,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# IntelliJ IDEA
+.idea/
+
+# Mac
+.DS_Store
