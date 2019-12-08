@@ -6,6 +6,8 @@ We have created a story to highlight the new features of Rails 6 which intereste
 
 You will discover new things on Rails 6, you will be surprised and /or disappointed, but the story begins now!
 
+[🎬 Watch the video of the talk at Lyon.rb meetup](https://www.youtube.com/watch?v=GjzSCqVs1P4)
+
 ### Summary
 
 - [Rails new](#cb20c48---rails-new)
