@@ -6,13 +6,31 @@ We have created a story to highlight the new features of Rails 6 which intereste
 
 You will discover new things on Rails 6, you will be surprised and /or disappointed, but the story begins now!
 
-![Image](One Day In Rails 6 World_Page_02.png)
+### Summary
+
+- [Rails new](#cb20c48---rails-new)
+- [Rails scaffold](#aa08e13---rails-scaffold)
+- [Install ActionText](#3db2068---install-actiontext)
+- [Add rich text to Changelog](#013d262---add-rich-text-to-changelog)
+- [Avoid N+1 query issue](#4006f5c---avoid-n1-query-issue)
+- [Override confirm dialog](#5134bb8---override-confirm-dialog)
+- [AR::Errors#of_kind?](#c727ff7---arerrorsof_kind)
+- [Parallel Testing](#5ea2a86---parallel-testing)
+- [ActiveSupport::ActionableError](#5886e94---activesupportactionableerror)
+- [Disable default scopes](#ab7c9cc---disable-default-scopes)
+- [Override implicit ordering](#ce6015d---override-implicit-ordering)
+- [AR and Infinite Ranges](#c92862e---ar-and-infinite-ranges)
+- [ActionView Allocation Instrumentation](#14657fb---actionview-allocation-instrumentation)
+- [Multi databases](#caa5ba5---multi-databases)
+- [ActionMailbox](#53f054b---actionmailbox)
+- [Conclusion](#conclusion)
+- [References](#references)
 
 ## [`#cb20c48`](https://github.com/perangusta/one-day-in-rails6-world/commit/cb20c48) - Rails new
 
-Today, we will be creating a new application to publish our changelogs from Per Angusta's product.
+Today, we will be creating a new application to publish the changelogs of [Per Angusta's product](https://www.per-angusta.com/en).
 
-As former Rails developers, we run the `rails new` command to bootstrap our new project. We are able to see the appearing of three brand new dependencies (`zeitwerk`, `actionmailbox`, `actiontext`) and a new folder in the tree `app/javascripts/packs` which is marking the arrival of Webpack as the main JavaScript dependencies manager (via `webpacker`).
+As standard Rails developers, we run the `rails new` command to bootstrap our new project. We are able to see the appearing of three brand new dependencies (`zeitwerk`, `actionmailbox`, `actiontext`) and a new folder in the tree `app/javascripts/packs` which is marking the arrival of Webpack as the main JavaScript dependencies manager (via `webpacker`).
 
 ![Image](One Day In Rails 6 World_Page_03.png)
 
@@ -38,6 +56,8 @@ Then the setup of `Actiontext` is as easy as a few lines of code (Model and view
 
 Did you know that rich content is stored in a third party table `action_text_rich_texts`? Let's avoid the N+1 query issue in our index view by using the builtin helpers for eager loading.
 
+ERRATUM: Note that `with_rich_text_content_and_embeds` does not fully result in expected optimization since it does not solve N+1 query issue of embedded images. 
+
 ![Image](One Day In Rails 6 World_Page_06.png)
 
 ## [`#5134bb8`](https://github.com/perangusta/one-day-in-rails6-world/commit/5134bb8) - Override confirm dialog
@@ -56,7 +76,7 @@ A changelog without any title would be kind of strange, is'nt it? Let's add a `p
 
 We should also add a validation on the description field because users always need to be guided. Let's say the description must be 3 characters length or more, and add a test.
 
-Did you know that Rails 6 is now bringing parallel testing by default? By appending a `sleep` command, we can highlight the new bahevior: Before around `8 seconds` and after around `5.5 seconds` using parallel testing.
+Did you know that Rails 6 is now bringing parallel testing by default? By appending a `sleep` command, we can highlight the new behavior: Before around `8 seconds` and after around `5.5 seconds` using parallel testing.
 
 Be aware that it may not be compatible with your existing test suite!
 
@@ -64,7 +84,7 @@ Be aware that it may not be compatible with your existing test suite!
 
 ## [`#5886e94`](https://github.com/perangusta/one-day-in-rails6-world/commit/5886e94) - ActiveSupport::ActionableError
 
-What about not to publish our changelogs by default on creation by implementing  a status with an `enum`. Let's create the migration, update the model, views and controller and manually test it!
+What about not publishing our changelogs by default on creation by implementing a status with an `enum`. Let's create the migration, update the model, views and controller and manually test it!
 
 Wait! Here is the famous `PendingMigrationError` exception raised by visiting our application. Note that there is a button `Run pending migrations`. brought by the new `ActionableError` interface. It's available for all exceptions, like ours `ChangelogMissingError` which now is capable to seed the database directly through the Web interface.
 
@@ -116,4 +136,22 @@ Finally, let's allow the contributors to create new changelogs outside of the We
 
 ## Conclusion
 
+...
+
 ![Image](One Day In Rails 6 World_Page_17.png)
+
+## References
+
+- https://edgeguides.rubyonrails.org/6_0_release_notes.html
+- https://edgeguides.rubyonrails.org/testing.html#parallel-testing
+- https://edgeguides.rubyonrails.org/action_text_overview.html
+- https://edgeguides.rubyonrails.org/active_record_multiple_databases.html
+- https://edgeguides.rubyonrails.org/action_mailbox_basics.html
+- https://github.com/rails/rails/issues/36177
+- https://github.com/rails/rails/pull/32404
+- https://github.com/rails/rails/pull/34605
+- https://github.com/rails/rails/pull/34480
+- https://github.com/rails/rails/pull/34906
+- https://github.com/rails/rails/pull/34136
+- https://api.rubyonrails.org/classes/ActiveSupport/ActionableError.html
+- https://api.rubyonrails.org/classes/ActiveModel/Errors.html#method-i-of_kind-3F
